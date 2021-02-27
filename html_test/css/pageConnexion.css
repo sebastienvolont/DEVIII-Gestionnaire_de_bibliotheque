@@ -1,0 +1,32 @@
+#bibliothequeLogo {
+	float : left;
+	width : 150px;
+	height : 150px;
+}
+#champConnexion {
+	position : absolute	;
+	background-color : grey;
+	width : 400px;
+	height : 500px;
+	padding : 15px;
+	left : 200px;
+	bottom : 25px;
+}
+
+#champInscription {
+	position: absolute;
+	width : 600px;
+	height : 500px;
+	background-color : grey;
+	padding : 15px;
+	right : 150px;
+	bottom : 25px;
+}
+
+#boutonInscription, #boutonConnexion{
+	padding : 15px;
+	width : 200px;
+	border-radius: 10px;
+	margin-left : 100px;
+	background-color : green;
+}
