@@ -9,7 +9,7 @@
 
 	</head>
 	<body>
-		<a href="bibliotheque.php"><img src="img/bibliotheque-logo.svg" id="bibliothequeLogo"></a>
+		<a href="index.php"><img src="img/bibliotheque-logo.svg" id="bibliothequeLogo"></a>
 		<form id="champConnexion">
 			<label for="pseudoUtilisateur"> Pseudonyme : <input type="text" name="champPseudo"> </label> <br> <br>
 			<label for="motDePasseUtilisateur"> Mot de passe <input type="password" name="champMotDePasse"> </label> <br> <br>
