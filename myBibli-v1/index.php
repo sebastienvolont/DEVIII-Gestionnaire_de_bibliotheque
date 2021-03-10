@@ -1,5 +1,5 @@
 <DOCTYPE html>
-<html>
+<html lang="">
 
 	<head>
 		<meta charset="utf-8">
@@ -15,19 +15,23 @@
 			$reponse = $bdd_bibliotheque->query("SELECT * FROM Livres");
 
 		?>
-		<header> <center> <h1> Ma bibliothèque virtuelle </h1> </center> </header>
-		<a href="index.php"><img src="img/bibliotheque-logo.svg" id="bibliothequeLogo"></a>
+		<header> <div style="text-align: center;"> <h1> Ma bibliothèque virtuelle </h1> </div> </header>
+		<a href="index.php"><img src="img/bibliotheque-logo.svg" id="bibliothequeLogo" alt=""></a>
 		<div id="espaceConnexion"> 
 			<form name="formulaireConnexion"> 
 				<p> Se connecter </p>
-				<input type="text" name="nomUtilisateur"> <br>
-				<input type="password" name="motDePasseUtilisateur">
-				<input type="submit" name="confirmerUtilisateur" value="Se connecter"><br><br>
+                <label>
+                    <input type="text" name="nomUtilisateur">
+                </label> <br>
+                <label>
+                    <input type="password" name="motDePasseUtilisateur">
+                </label>
+                <input type="submit" name="confirmerUtilisateur" value="Se connecter"><br><br>
 				<a href="pageConnexion.php"> Je n'ai pas de compte </a>
 			</form>
 		</div>
 		<form id="rechercheLivre">
-			<input type="text" id="barreDeRecherche" value="Barre de recherche">
+            <label for="barreDeRecherche"></label><input type="text" id="barreDeRecherche" value="Barre de recherche">
 			<input type="button" id="recherchePublique" value="Publique">
 		</form>
 		<div id="containerLivres">
