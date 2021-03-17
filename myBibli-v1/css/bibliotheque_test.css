@@ -1,0 +1,67 @@
+.titre {
+	text-align: center;
+	color: #008080;
+}
+.connexion {
+	text-align: right;
+	color: #00FF00;
+	text-decoration: none;
+}
+
+#espaceConnexion {
+	float : right;
+	border: 2px solid black;
+	padding : 25px;
+	background-color : brown;
+	border-radius : 10px;
+}
+
+#espaceConnexion input {
+	margin : 3px;
+}
+
+#bibliothequeLogo {
+	float : left;
+	width : 150px;
+	height : 150px;
+}
+
+#rechercheLivre #barreDeRecherche{
+	bottom : 700px;
+	padding : 15px;
+	right : 700px;
+	width : 500px;
+	position:absolute;
+	left : 500px;
+	top : 200px;
+}
+
+#recherchePublique {
+	position:absolute;
+	padding : 15px;
+	border-radius : 15px;
+	top : 190px;
+	left : 1025px;
+}
+
+#containerLivres{
+	background-color : grey;
+	height : 1500px;
+	margin-top : 250px;
+}
+
+
+.box_livre{
+	background-color : brown;
+	height : 625px;
+	width : 300px;
+	margin-left : 50px;
+	margin-top : 50px;
+	float : left;
+	text-align : center;
+	color : white;
+}
+.box_livre img {
+	height : 250px;
+	width : 200px;
+}

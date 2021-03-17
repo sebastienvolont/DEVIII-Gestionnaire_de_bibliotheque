@@ -7,7 +7,7 @@
 		<script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
 		<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
 		<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-		<link rel="stylesheet" href="css/bibliotheque.css">
+		<link rel="stylesheet" href="css/bibliotheque_test.css">
 	</head>
 	<body>
 		<div id="root"></div>
@@ -40,9 +40,10 @@
 		<div id="containerLivres">
 
 				<?php
+				echo $donneesLivres["idLivre"];
 					while($donneesLivres = $reponse->fetch())
 					{
-						echo "<section id='Livre01'><p>" . $donneesLivres["Auteur"] . "<br><br>" . $donneesLivres["titre"] . "</p>" . "<img src='" . $donneesLivres["premiereDeCouverture"] . "'><br><br> Synopsis :<br>" . $donneesLivres["synopsis"] . "</section>";
+						echo "<section id='{$donneesLivres["idLivre"]}' class='box_livre'><p>" . $donneesLivres["Auteur"] . "<br><br>" . $donneesLivres["titre"] . "</p>" . "<img src='" . $donneesLivres["premiereDeCouverture"] . "'><br><br> Synopsis :<br>" . $donneesLivres["synopsis"] . "</section>";
 					}
 					$reponse->closeCursor();
 				?>
