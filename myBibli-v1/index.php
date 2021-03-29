@@ -42,7 +42,23 @@
 						echo "<section id='Livre01'><p>" . $donneesLivres["Auteur"] . "<br><br>" . $donneesLivres["titre"] . "</p>" . "<img src='" . $donneesLivres["premiereDeCouverture"] . "'><br><br> Synopsis :<br>" . $donneesLivres["synopsis"] . "</section>";
 					}
 					$reponse->closeCursor();
-				?>
+
+					$url = 'https://www.googleapis.com/books/v1/volumes?q=harrypotter';
+                    $recup_json = file_get_contents($url);
+                    $objet_json = json_decode($recup_json, true);
+//                    for($i = 0; $i < 10; $i++) {
+                        $nom_livre = $objet_json["items"][0]["volumeInfo"]["title"];
+                        print($nom_livre);
+//                        $img_livre = $objet_json["items"][0]["imageLinks"]["thumbnail"];
+//                        print($img_livre);
+
+
+//                   $requete_insertion =  $bdd_bibliotheque->prepare('INSERT INTO livres (titre, anneeParution, maisonEdition, Auteur, synopsis, genreLitteraire, premiereDeCouverture) VALUES (:nom, 1992, " ", "victorhugo", " ", " ", " ")');
+//
+//                   $requete_insertion->execute(array(
+//                           'nom' => $nom_livre,
+//                   ));
+                ?>
 		</div>
 	</body>
 
