@@ -25,25 +25,29 @@
 		function LinkElement() {
     return <div className='connexion'><a href={"pageConnexion.php"}>Se connecter</a></div>
 		}
+
 		function rechercherLivre(){
 	    let champNom = document.getElementById("barreDeRecherche").value;
-			console.log(champNom);
 	    let xhr = new XMLHttpRequest();
 	    xhr.onload = recupererDonnees;
 	    xhr.open("get", `https://www.googleapis.com/books/v1/volumes?q=${champNom}`, true);
 	    xhr.send();
 		}
 
+
+		function ajouterLivre(){
+			console.log("cette fonction va ajouter un livre a la DB")
+		}
+
 		function recupererDonnees() {
-		    let traiter = JSON.parse(this.responseText);
+				let traiter = JSON.parse(this.responseText);
+				console.log(traiter)
 				let count = traiter.items.length
 				document.getElementById("counter").innerHTML = "<p>Votre recherche à rapporté " + count + " résultats</p>";
 				document.getElementById("containerLivres").innerHTML = "";
 				for(let i = 0; i < Number(count); i++){
 				let imageLivre = traiter["items"][i].volumeInfo.imageLinks.thumbnail
-				document.getElementById("containerLivres").innerHTML += "<p>" + traiter["items"][i].volumeInfo.title + "</p>";
-				document.getElementById("containerLivres").innerHTML += `<img src='${imageLivre}'>`;
-				document.getElementById("containerLivres").innerHTML += "<p>" + traiter["items"][i].volumeInfo.authors + "</p>";
+				document.getElementById("containerLivres").innerHTML += `<div id=Livre${i}> <p>  ${traiter["items"][i].volumeInfo.title} </p>`+ `<img src='${imageLivre}'>`+ "<p>" + traiter["items"][i].volumeInfo.authors + "</p><br><button onclick='ajouterLivre()'>Ajouter ce livre</button></div>";
 
 
 
