@@ -10,7 +10,7 @@ use App\Entity\Livres;
 class BlogController extends AbstractController
 {
     /**
-     * @Route("/acceuil", name="acceuil")
+     * @Route("/", name="acceuil")
      */
     public function index(): Response
     {
@@ -25,13 +25,12 @@ class BlogController extends AbstractController
 
 
     /**
-     * @Route("/", name="home")
+     * @Route("/information", name="information")
      */
     public function home(): Response
     {
-        return $this->render('virtueltheque/home.html.twig', [
-            'title'=>"Bienvenue sur mon site les bros",
-            'age' => 30,
+        return $this->render('virtueltheque/information.html.twig', [
+            'title'=>"Page d'information",
         ]);
     }
 
