@@ -1,18 +1,12 @@
 {% extends 'base.html.twig' %}
-
+{% form_theme formLivre 'bootstrap_4_layout.html.twig'%}
 {% block body %}
     <h1>Création Formulaire</h1>
 
     {{form_start(formLivre)}}
-    <div class="form-group">
-        <label for="">Titre</label>
-        {{ form_widget(formLivre.titre)}}
-    </div>
     
-    <div class="form-group">
-        <label for="">Résumé</label>
-        {{ form_widget(formLivre.synopsis)}}
-    </div>
+    {{ form_widget(formLivre)}}
 
     {{form_end(formLivre)}}
+
 {% endblock %}

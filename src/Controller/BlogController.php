@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Livres;
@@ -70,16 +71,17 @@ class BlogController extends AbstractController
         $form = $this->createFormBuilder($mylivre)
                     ->add('titre',TextType::class,[ 
                         'attr'=> [
-                            'placeholder'=>"Titre du livre",
-                            'class' => 'form-control'
+                            'placeholder'=>"Titre du livre"
                             ]
                         ])
                     ->add('synopsis',TextareaType::class,[ 
                         'attr'=> [
-                            'placeholder'=>"Synopsis du Livre",
-                            'class' => 'form-control'
+                            'placeholder'=>"Synopsis du Livre"
                             ]
                         ])
+                    ->add('enregistrer',SubmitType::class,[
+                        'label' => 'Enregistrer'
+                    ])
                     ->getForm();
 
         return $this->render('virtueltheque/create.html.twig',[
