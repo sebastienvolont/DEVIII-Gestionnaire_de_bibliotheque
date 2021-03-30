@@ -2,14 +2,17 @@
 
 namespace App\Controller;
 
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Livres;
-
+use App\Entity\Bibliotheque;
 class BlogController extends AbstractController
 {
     /**
@@ -64,26 +67,22 @@ class BlogController extends AbstractController
      * @Route("/livre/new",name="livre_create")
      */
 
-    public function create(){
+    public function create(Request $request, ObjectManager $manager){
 
+       
         $mylivre = new Livres();
-
         $form = $this->createFormBuilder($mylivre)
-                    ->add('titre',TextType::class,[ 
-                        'attr'=> [
-                            'placeholder'=>"Titre du livre"
-                            ]
-                        ])
-                    ->add('synopsis',TextareaType::class,[ 
-                        'attr'=> [
-                            'placeholder'=>"Synopsis du Livre"
-                            ]
-                        ])
-                    ->add('enregistrer',SubmitType::class,[
-                        'label' => 'Enregistrer'
-                    ])
+                    ->add('titre')
+                    ->add('synopsis')
+                    ->add('maisonedition')
+                    ->add('genrelitteraire')
+                    ->add('premieredecouverture')
                     ->getForm();
 
+        $form->handleRequest($request);
+        \dump($mylivre);
+        
+        
         return $this->render('virtueltheque/create.html.twig',[
             'formLivre' => $form->createView()
         ]);
