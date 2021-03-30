@@ -73,7 +73,7 @@ class BlogController extends AbstractController
         \dump($mylivre);
         
         
-        return $this->render('virtueltheque/create.html.twig',[
+        return $this->render('virtueltheque/addLivre.html.twig',[
             'formLivre' => $form->createView()
         ]);
     }
