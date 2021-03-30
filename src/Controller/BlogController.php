@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Livres;
@@ -10,7 +12,7 @@ use App\Entity\Livres;
 class BlogController extends AbstractController
 {
     /**
-     * @Route("/", name="acceuil")
+     * @Route("/", name="home")
      */
     public function index(): Response
     {
@@ -27,7 +29,7 @@ class BlogController extends AbstractController
     /**
      * @Route("/information", name="information")
      */
-    public function home(): Response
+    public function myInfo(): Response
     {
         return $this->render('virtueltheque/information.html.twig', [
             'title'=>"Page d'information",
@@ -54,6 +56,34 @@ class BlogController extends AbstractController
     {
         return $this->render('virtueltheque/addLivre.html.twig', [
             
+        ]);
+    }
+
+    /**
+     * @Route("/livre/new",name="livre_create")
+     */
+
+    public function create(){
+
+        $mylivre = new Livres();
+
+        $form = $this->createFormBuilder($mylivre)
+                    ->add('titre',TextType::class,[ 
+                        'attr'=> [
+                            'placeholder'=>"Titre du livre",
+                            'class' => 'form-control'
+                            ]
+                        ])
+                    ->add('synopsis',TextareaType::class,[ 
+                        'attr'=> [
+                            'placeholder'=>"Synopsis du Livre",
+                            'class' => 'form-control'
+                            ]
+                        ])
+                    ->getForm();
+
+        return $this->render('virtueltheque/create.html.twig',[
+            'formLivre' => $form->createView()
         ]);
     }
 }
