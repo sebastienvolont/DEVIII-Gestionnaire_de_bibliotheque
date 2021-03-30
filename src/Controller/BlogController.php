@@ -53,18 +53,8 @@ class BlogController extends AbstractController
         ]);
     }
 
-     /**
-     * @Route("/addLivre", name="addLivre")
-     */
-    public function addLivre(): Response
-    {
-        return $this->render('virtueltheque/addLivre.html.twig', [
-            
-        ]);
-    }
-
     /**
-     * @Route("/livre/new",name="livre_create")
+     * @Route("/addLivre/new",name="addLivre")
      */
 
     public function create(Request $request, ObjectManager $manager){
