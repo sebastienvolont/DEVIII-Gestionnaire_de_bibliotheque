@@ -43,14 +43,48 @@
 					}
 					$reponse->closeCursor();
 
-					$url = 'https://www.googleapis.com/books/v1/volumes?q=harrypotter';
+					$url = 'https://www.googleapis.com/books/v1/volumes?q=bob';
                     $recup_json = file_get_contents($url);
                     $objet_json = json_decode($recup_json, true);
-//                    for($i = 0; $i < 10; $i++) {
-                        $nom_livre = $objet_json["items"][0]["volumeInfo"]["title"];
-                        print($nom_livre);
-//                        $img_livre = $objet_json["items"][0]["imageLinks"]["thumbnail"];
-//                        print($img_livre);
+                    for($i = 0; $i < 10; $i++) {
+                            if(isset($objet_json["items"][$i]["volumeInfo"]["title"])) {
+                                $nom_livre = $objet_json["items"][$i]["volumeInfo"]["title"];
+
+                                if (isset($objet_json["items"][$i]["volumeInfo"]["description"])) {
+                                    $synopsys_livre = $objet_json["items"][$i]["volumeInfo"]["description"];
+                                }
+                                if (isset($objet_json["items"][$i]["volumeInfo"]["publishedDate"])) {
+                                    $anneeParution_livre = $objet_json["items"][$i]["volumeInfo"]["publishedDate"];
+                                }
+                                if (isset($objet_json["items"][$i]["volumeInfo"]["imageLinks"]["thumbnail"])) {
+                                    $img_livre = $objet_json["items"][$i]["volumeInfo"]["imageLinks"]["thumbnail"];
+                                }
+                                if (isset($objet_json["items"][$i]["volumeInfo"]["publisher"])) {
+                                    $maisonEdition_livre = $objet_json["items"][$i]["volumeInfo"]["publisher"];
+                                }
+                                if (isset($objet_json["items"][$i]["volumeInfo"]["categories"][0])) {
+                                    $genreLitteraire_livre = $objet_json["items"][$i]["volumeInfo"]["categories"][0];
+                                }
+                                if (isset($objet_json["items"][$i]["volumeInfo"]["authors"][0])) {
+                                    $auteur_livre = $objet_json["items"][$i]["volumeInfo"]["authors"][0];
+                                    print($auteur_livre);
+                                }
+
+
+                                $requete_insertion =  $bdd_bibliotheque->prepare('INSERT INTO livres (titre, anneeParution, maisonEdition, Auteur, synopsis, genreLitteraire, premiereDeCouverture) VALUES (:nom, :annee, :maison, :auteur, :synop, :genre, :premierecouv)');
+
+                            $requete_insertion->execute(array(
+                                'nom' => $nom_livre,
+                                'annee' => $anneeParution_livre,
+                                'maison' => $maisonEdition_livre,
+                                'auteur' => $auteur_livre,
+                                'synop' => $synopsys_livre,
+                                'genre' => $genreLitteraire_livre,
+                                'premierecouv' => $img_livre
+                            ));
+                    }
+
+                            }
 
 
 //                   $requete_insertion =  $bdd_bibliotheque->prepare('INSERT INTO livres (titre, anneeParution, maisonEdition, Auteur, synopsis, genreLitteraire, premiereDeCouverture) VALUES (:nom, 1992, " ", "victorhugo", " ", " ", " ")');
