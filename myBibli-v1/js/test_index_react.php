@@ -47,12 +47,17 @@
 				document.getElementById("containerLivres").innerHTML = "";
 				for(let i = 0; i < Number(count); i++){
 				let imageLivre = traiter["items"][i].volumeInfo.imageLinks.thumbnail
-				document.getElementById("containerLivres").innerHTML += `<div id=Livre${i}> <p>  ${traiter["items"][i].volumeInfo.title} </p>`+ `<img src='${imageLivre}'>`+ "<p>" + traiter["items"][i].volumeInfo.authors + "</p><br><button onclick='ajouterLivre()'>Ajouter ce livre</button></div>";
-
-
-
+				document.getElementById("containerLivres").innerHTML += `<div id=Livre${i} class='box_livre' onclick='redirectionPage(this)'> <p>  ${traiter["items"][i].volumeInfo.title} </p>`+ `<img src='${imageLivre}'>`+ "<p>" + traiter["items"][i].volumeInfo.authors + "</p><div id='infoSup' style='display:none;'>" + traiter['items'][i].volumeInfo.categories  + "</div><br><button onclick='ajouterLivre()'>Ajouter ce livre</button></div>";
 			}
+		}
+		function redirectionPage(elmnt){
 
+			//window.location.href = "pageLivre.php";
+			let livre = elmnt.childNodes[1].innerText;
+			let auteur = elmnt.childNodes[3].innerText;
+			let categorie = elmnt.childNodes[4].innerText;
+			let imageLivre = elmnt.childNodes[2].currentSrc;
+			console.log(livre, auteur, categorie, imageLivre);
 		}
 
 
@@ -73,7 +78,7 @@
 				echo $donneesLivres["idLivre"];
 					while($donneesLivres = $reponse->fetch())
 					{
-						echo "<section id='{$donneesLivres["idLivre"]}' class='box_livre' onclick='location.href' == '''pageLivre.php'''><p>" . $donneesLivres["Auteur"] . "<br><br>" . $donneesLivres["titre"] . "</p>" . "<img src='" . $donneesLivres["premiereDeCouverture"] . "'><br><br> Synopsis :<br>" . $donneesLivres["synopsis"] . "</section>";
+						echo "<div id='{$donneesLivres["idLivre"]}' class='box_livre'><p>" . $donneesLivres["Auteur"] . "<br><br>" . $donneesLivres["titre"] . "</p>" . "<img src='" . $donneesLivres["premiereDeCouverture"] . "'><br><br> Synopsis :<br>" . $donneesLivres["synopsis"] . "</div>";
 					}
 					$reponse->closeCursor();
 				?>
