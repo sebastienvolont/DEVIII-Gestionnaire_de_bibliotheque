@@ -3,13 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 10 mars 2021 à 10:47
+-- Généré le : mar. 30 mars 2021 à 14:44
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
-SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -72,6 +72,20 @@ INSERT INTO `bibliotheque` (`id_bibli`, `nom_bibli`, `date`, `id_user`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `doctrine_migration_versions`
+--
+
+DROP TABLE IF EXISTS `doctrine_migration_versions`;
+CREATE TABLE IF NOT EXISTS `doctrine_migration_versions` (
+  `version` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  `executed_at` datetime DEFAULT NULL,
+  `execution_time` int(11) DEFAULT NULL,
+  PRIMARY KEY (`version`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `livres`
 --
 
@@ -96,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `livres` (
 --
 
 INSERT INTO `livres` (`idLivre`, `titre`, `anneeParution`, `maisonEdition`, `Auteur`, `synopsis`, `genreLitteraire`, `premiereDeCouverture`, `id_bibli`) VALUES
-(1, 'Les misérables', 1862, '', 'Victor Hugo', 'Les Misérables est un roman de Victor Hugo publié en 1862. Il a donné lieu à de nombreuses adaptations, au cinéma et sur de nombreux autres supports.\r\n\r\nDans ce roman emblématique de la littérature française qui décrit la vie de pauvres gens dans Paris et la France provinciale du xixe siècle, l\'auteur s\'attache plus particulièrement au destin du bagnard Jean Valjean. C\'est un roman historique, social et philosophique dans lequel on retrouve les idéaux du romantisme et ceux de Victor Hugo concernant la nature humaine.', 'Roman, Tragédie', 'http://localhost/projetWEB/myBibli-v1/img/lesmiserable.jpg', 1),
+(1, 'Les Misérables', 1862, '', 'Victor Hugo', 'Les Misérables est un roman de Victor Hugo publié en 1862. Il a donné lieu à de nombreuses adaptations, au cinéma et sur de nombreux autres supports.\r\n\r\nDans ce roman emblématique de la littérature française qui décrit la vie de pauvres gens dans Paris et la France provinciale du xixe siècle, l\'auteur s\'attache plus particulièrement au destin du bagnard Jean Valjean. C\'est un roman historique, social et philosophique dans lequel on retrouve les idéaux du romantisme et ceux de Victor Hugo concernant la nature humaine.', 'Roman, Tragédie', 'http://localhost/projetWEB/myBibli-v1/img/lesmiserable.jpg', 1),
 (2, 'Un rien peut tout changer', 2018, '', 'James Clear', 'Les gens pensent que pour modifier le cours de leur vie, ils doivent faire de grands changements.Dans ce livre, ils découvriront que les plus petits changements couplés à une bonne connaissance de la psychologie et des neurosciences peuvent avoir un effet révolutionnaire sur leur existence et leurs relations.', 'Livre d’auto-assistance', 'http://localhost/projetWEB/myBibli-v1/img/unrien.jpg', 1),
 (3, 'Harry Potter à l\'école des sorciers', 1997, '', 'J. K. Rowling\r\n', 'Le jour de ses onze ans, Harry Potter, un orphelin élevé par un oncle et une tante qui le détestent, voit son existence bouleversée. Un géant nommé Hagrid, vient le chercher pour l\'emmener à Poudlard, une école de sorcellerie ! Voler en balai, jeter des sorts, combattre les trolls : Harry se révèle un sorcier doué. Mais quel est le mystère qui l\'entoure ? Et qui est l\'effroyable V..., le mage dont personne n\'ose prononcer le nom ?', 'Roman, littéraire', 'http://localhost/projetWEB/myBibli-v1/img/harry1.jpg', 1),
 (4, 'Le Seigneur des anneaux', 1955, '', 'J. R. R. Tolkien', 'Le Seigneur des anneaux est un roman en trois volumes de J. R. R. Tolkien paru en 1954 et 1955. Prenant place dans le monde de fiction de la Terre du Milieu, il suit la quête du hobbit Frodon Sacquet, qui doit détruire l\'Anneau unique afin que celui-ci ne tombe pas entre les mains de Sauron, le Seigneur des ténèbres.', 'Roman, Heroic Fantasy', 'http://localhost/projetWEB/myBibli-v1/img/loth1.jpg', 1),
@@ -140,7 +154,6 @@ ALTER TABLE `bibliotheque`
 ALTER TABLE `livres`
   ADD CONSTRAINT `livres_ibfk_1` FOREIGN KEY (`id_bibli`) REFERENCES `bibliotheque` (`id_bibli`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `livres_ibfk_2` FOREIGN KEY (`Auteur`) REFERENCES `auteurs` (`nom_auth`) ON DELETE CASCADE ON UPDATE CASCADE;
-SET FOREIGN_KEY_CHECKS=1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
