@@ -1,0 +1,23 @@
+###Creation du formulaire Login et register 
+
+##installation doctrine:
+ composer require symfony/orm-pack
+ composer require --dev symfony/maker-bundle
+ 
+##creation base de données:
+  php bin/console doctrine:database:create
+
+##creation User Class:
+  php bin/console make:user
+
+##creation du formulaire:
+  php bin/console make:auth
+
+##creation du controller:
+  php bin/console make:controller
+
+##migration des données vers la table:
+  php bin/console make:migration
+  php bin/console doctrine:migrations:migrate
+
+
