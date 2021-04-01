@@ -3,23 +3,24 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * Livres
- *
- * @ORM\Table(name="livres", indexes={@ORM\Index(name="Auteur", columns={"Auteur"}), @ORM\Index(name="id_bibli", columns={"id_bibli"})})
- * @ORM\Entity
+ * @ApiResource()
+ * @ORM\Table(name="livres", indexes={@ORM\Index(name="id_bibliotheque", columns={"id_bibliotheque"})})
+ * @ORM\Entity(repositoryClass="App\Repository\LivresRepository")
  */
 class Livres
 {
     /**
      * @var int
      *
-     * @ORM\Column(name="idLivre", type="integer", nullable=false)
+     * @ORM\Column(name="id_livre", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idlivre;
+    private $idLivre;
 
     /**
      * @var string
@@ -29,18 +30,18 @@ class Livres
     private $titre;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="anneeParution", type="integer", nullable=false)
+     * @ORM\Column(name="edition", type="string", length=255, nullable=false)
      */
-    private $anneeparution;
+    private $edition;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="maisonEdition", type="string", length=255, nullable=false)
+     * @ORM\Column(name="genre", type="string", length=255, nullable=false)
      */
-    private $maisonedition;
+    private $genre;
 
     /**
      * @var string
@@ -52,32 +53,37 @@ class Livres
     /**
      * @var string
      *
-     * @ORM\Column(name="genreLitteraire", type="string", length=255, nullable=false)
+     * @ORM\Column(name="couverture", type="text", length=65535, nullable=false)
      */
-    private $genrelitteraire;
+    private $couverture;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="parution", type="integer", nullable=false)
+     */
+    private $parution;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="premiereDeCouverture", type="string", length=255, nullable=false)
+     * @ORM\Column(name="auteur", type="text", length=65535, nullable=false)
      */
-    private $premieredecouverture;
+    private $auteur;
 
     /**
      * @var \Bibliotheque
      *
      * @ORM\ManyToOne(targetEntity="Bibliotheque")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_bibli", referencedColumnName="id_bibli")
+     *   @ORM\JoinColumn(name="id_bibliotheque", referencedColumnName="id_biblio")
      * })
      */
-    private $idBibli;
+    private $idBibliotheque;
 
-    
-
-    public function getIdlivre(): ?int
+    public function getIdLivre(): ?int
     {
-        return $this->idlivre;
+        return $this->idLivre;
     }
 
     public function getTitre(): ?string
@@ -92,26 +98,26 @@ class Livres
         return $this;
     }
 
-    public function getAnneeparution(): ?int
+    public function getEdition(): ?string
     {
-        return $this->anneeparution;
+        return $this->edition;
     }
 
-    public function setAnneeparution(int $anneeparution): self
+    public function setEdition(string $edition): self
     {
-        $this->anneeparution = $anneeparution;
+        $this->edition = $edition;
 
         return $this;
     }
 
-    public function getMaisonedition(): ?string
+    public function getGenre(): ?string
     {
-        return $this->maisonedition;
+        return $this->genre;
     }
 
-    public function setMaisonedition(string $maisonedition): self
+    public function setGenre(string $genre): self
     {
-        $this->maisonedition = $maisonedition;
+        $this->genre = $genre;
 
         return $this;
     }
@@ -128,50 +134,50 @@ class Livres
         return $this;
     }
 
-    public function getGenrelitteraire(): ?string
+    public function getCouverture(): ?string
     {
-        return $this->genrelitteraire;
+        return $this->couverture;
     }
 
-    public function setGenrelitteraire(string $genrelitteraire): self
+    public function setCouverture(string $couverture): self
     {
-        $this->genrelitteraire = $genrelitteraire;
+        $this->couverture = $couverture;
 
         return $this;
     }
 
-    public function getPremieredecouverture(): ?string
+    public function getParution(): ?int
     {
-        return $this->premieredecouverture;
+        return $this->parution;
     }
 
-    public function setPremieredecouverture(string $premieredecouverture): self
+    public function setParution(int $parution): self
     {
-        $this->premieredecouverture = $premieredecouverture;
+        $this->parution = $parution;
 
         return $this;
     }
 
-    public function getIdBibli(): ?Bibliotheque
-    {
-        return $this->idBibli;
-    }
-
-    public function setIdBibli(?Bibliotheque $idBibli): self
-    {
-        $this->idBibli = $idBibli;
-
-        return $this;
-    }
-
-    public function getAuteur(): ?Auteurs
+    public function getAuteur(): ?string
     {
         return $this->auteur;
     }
 
-    public function setAuteur(?Auteurs $auteur): self
+    public function setAuteur(string $auteur): self
     {
         $this->auteur = $auteur;
+
+        return $this;
+    }
+
+    public function getIdBibliotheque(): ?Bibliotheque
+    {
+        return $this->idBibliotheque;
+    }
+
+    public function setIdBibliotheque(?Bibliotheque $idBibliotheque): self
+    {
+        $this->idBibliotheque = $idBibliotheque;
 
         return $this;
     }

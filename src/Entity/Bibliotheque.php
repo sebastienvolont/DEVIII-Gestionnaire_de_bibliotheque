@@ -3,51 +3,64 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * Bibliotheque
- *
+ * @ApiResource()
  * @ORM\Table(name="bibliotheque", indexes={@ORM\Index(name="id_user", columns={"id_user"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\BibliothequeRepository")
  */
 class Bibliotheque
 {
     /**
      * @var int
      *
-     * @ORM\Column(name="id_bibli", type="integer", nullable=false)
+     * @ORM\Column(name="id_biblio", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idBibli;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="nom_bibli", type="string", length=255, nullable=false)
-     */
-    private $nomBibli;
+    private $idBiblio;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="date", nullable=false)
+     * @ORM\Column(name="date_crea", type="date", nullable=false)
      */
-    private $date;
+    private $dateCrea;
 
     /**
-     * @var \User
+     * @var string
      *
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\Column(name="nom_bibli", type="string", length=25, nullable=false)
+     */
+    private $nomBibli;
+
+    /**
+     * @var \Users
+     *
+     * @ORM\ManyToOne(targetEntity="Users")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_user", referencedColumnName="id_user")
      * })
      */
     private $idUser;
 
-    public function getIdBibli(): ?int
+    public function getIdBiblio(): ?int
     {
-        return $this->idBibli;
+        return $this->idBiblio;
+    }
+
+    public function getDateCrea(): ?\DateTimeInterface
+    {
+        return $this->dateCrea;
+    }
+
+    public function setDateCrea(\DateTimeInterface $dateCrea): self
+    {
+        $this->dateCrea = $dateCrea;
+
+        return $this;
     }
 
     public function getNomBibli(): ?string
@@ -62,24 +75,12 @@ class Bibliotheque
         return $this;
     }
 
-    public function getDate(): ?\DateTimeInterface
-    {
-        return $this->date;
-    }
-
-    public function setDate(\DateTimeInterface $date): self
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    public function getIdUser(): ?User
+    public function getIdUser(): ?Users
     {
         return $this->idUser;
     }
 
-    public function setIdUser(?User $idUser): self
+    public function setIdUser(?Users $idUser): self
     {
         $this->idUser = $idUser;
 
