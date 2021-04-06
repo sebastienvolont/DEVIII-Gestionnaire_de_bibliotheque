@@ -64,9 +64,9 @@ class BlogController extends AbstractController
         $form = $this->createFormBuilder($mylivre)
                     ->add('titre')
                     ->add('synopsis')
-                    ->add('maisonedition')
-                    ->add('genrelitteraire')
-                    ->add('premieredecouverture')
+                    ->add('edition')
+                    ->add('genre')
+                    ->add('couverture')
                     ->getForm();
 
         $form->handleRequest($request);
