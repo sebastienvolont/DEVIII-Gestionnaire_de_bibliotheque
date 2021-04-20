@@ -3,7 +3,7 @@
 {% block title %}Hello BlogController!{% endblock %}
 
 {% block body %}
-<section class="mybibli">
+{#<section class="mybibli">
     {% for livre in livres %}
         <article>
             <h2>{{livre.titre}}</h2>
@@ -15,9 +15,9 @@
                 <a href="/afficherLivre/{{livre.idLivre}}" class="btn btn-primary">afficher les informations</a>
             </div>
         </article>
-        
+
     {% endfor %}
 
-</section>
-    
+</section> #}
+<div id="sectionLivres"></div>
 {% endblock %}

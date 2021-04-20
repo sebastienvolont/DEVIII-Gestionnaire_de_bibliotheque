@@ -17,7 +17,13 @@ import ReactDOM from 'react-dom'
 
 // import Banner from "./MyComponent"
 
+<<<<<<< Updated upstream
 import AuteurLivre from "./MyComponent";
+=======
+import TestTable from "./MyComponent";
+
+import logo from "./img/bibliotheque-logo.svg"
+>>>>>>> Stashed changes
 
 
 class App extends React.Component {
@@ -46,10 +52,38 @@ class App extends React.Component {
         const {livres} = this.state;
 
         return (
+<<<<<<< Updated upstream
             <div>
                 {livres.map((livre, i) => (
                     <AuteurLivre key={i} titre={livre.titre} auteur={livre.auteur}/>
                 ))}
+=======
+            <div  className="container">
+        <header>
+
+        <center>
+            <h1 className="titreH1">Modification de ma bibliothÃ¨que</h1>
+        </center>
+        <img src={logo} className={'bibliothequeLogo'}/>
+        </header>
+
+            <div>
+
+            <table className="table table-secondary table-bordered border-dark">
+            <thead className="thead-dark">
+                <tr>
+                    <th>Id livre</th>
+                    <th>Titre</th>
+                    <th>Auteur </th>
+                    <th> </th>
+                </tr>
+            </thead>
+                {livres.map((livre, i) => (
+                    <TestTable key={i} idLivre={livre.idLivre} titre={livre.titre} auteur={livre.auteur}/>
+                ))}
+            </table>
+            </div>
+>>>>>>> Stashed changes
             </div>
         )
     }
@@ -57,3 +91,9 @@ class App extends React.Component {
 
 ReactDOM.render(<App />, document.getElementById("root"))
 
+<<<<<<< Updated upstream
+=======
+                /* {{livres.map((livre, i) => (
+                    <AuteurLivre key={i} titre={livre.titre} auteur={livre.auteur}/>
+                ))} }*/
+>>>>>>> Stashed changes

@@ -17,8 +17,8 @@ use PDO;
 class BlogController extends AbstractController
 
 {
-    
-    
+
+
     /**
      * @Route("/", name="home")
      */
@@ -32,9 +32,9 @@ class BlogController extends AbstractController
             'livres' => $livres
         ]);
 
-        
-       
-        
+
+
+
     }
 
     /**
@@ -42,7 +42,7 @@ class BlogController extends AbstractController
      */
     public function myInfo(): Response
     {
-        
+
         return $this->render('virtueltheque/information.html.twig', [
             'title'=>"Page d'information",
         ]);
@@ -53,7 +53,7 @@ class BlogController extends AbstractController
      */
      public function modifLivres(): Response
      {
-        $bdd_bibliotheque = new PDO('mysql:host=localhost;dbname=bibliothequevirtuelle_version3;charset=utf8', 'root', '');
+        $bdd_bibliotheque = new PDO('mysql:host=localhost;dbname=v3_bibli;charset=utf8', 'root', 'root');
 
 		$reponse = $bdd_bibliotheque->query("SELECT * FROM Livres");
 
@@ -64,13 +64,13 @@ class BlogController extends AbstractController
         }
         $recup_json = file_get_contents($url);
         $objet_json = json_decode($recup_json, true);
-        
+
         $tableauLivres = array();
 
         for($i = 0; $i < 10; $i++) {
             if(isset($objet_json["items"][$i]["volumeInfo"]["title"])) {
             $nom_livre = $objet_json["items"][$i]["volumeInfo"]["title"];
-            
+
             } else {
                 $nom_livre = "Pas de résultat";
             }
@@ -87,7 +87,7 @@ class BlogController extends AbstractController
             if (isset($objet_json["items"][$i]["volumeInfo"]["imageLinks"]["thumbnail"])) {
                 $img_livre = $objet_json["items"][$i]["volumeInfo"]["imageLinks"]["thumbnail"];
             } else {
-                $img_livre = ""; 
+                $img_livre = "";
             }
             if (isset($objet_json["items"][$i]["volumeInfo"]["publisher"])) {
                 $maisonEdition_livre = $objet_json["items"][$i]["volumeInfo"]["publisher"];
@@ -104,7 +104,7 @@ class BlogController extends AbstractController
             } else {
                 $auteur_livre = "";
             }
-                
+
             array_push($tableauLivres, $i);
             $tableauLivres[$i] = array("nom" => $nom_livre,
                                         "desc" => $synopsys_livre,
@@ -112,7 +112,7 @@ class BlogController extends AbstractController
                                         "img" => $img_livre,
                                         "edi" => $maisonEdition_livre,
                                         "genre" => $genreLitteraire_livre,
-                                        "auteur" => $auteur_livre); 
+                                        "auteur" => $auteur_livre);
         }
 
 
@@ -132,16 +132,16 @@ class BlogController extends AbstractController
                         'auteur_param' => $tableauLivres[$index - 1]["auteur"],
                         'idBiblio_param' => 1
                     ));
-                } 
-    
+                }
+
     }
-            
+
          return $this->render('virtueltheque/modifLivre.html.twig', [
             'title' => "Page de modification de livres",
             'nomAuteur' => $auteur_livre,
             'livretab' => $tableauLivres,
             'controller_name' => 'BlogController']);
-            
+
      }
 
      /**
@@ -163,7 +163,7 @@ class BlogController extends AbstractController
 
     public function create(Request $request, ObjectManager $manager){
 
-       
+
         $mylivre = new Livres();
         $form = $this->createFormBuilder($mylivre)
                     ->add('titre')
@@ -175,11 +175,11 @@ class BlogController extends AbstractController
 
         $form->handleRequest($request);
         \dump($mylivre);
-        
-        
+
+
         return $this->render('virtueltheque/addLivre.html.twig',[
             'formLivre' => $form->createView()
         ]);
-        
+
     }
 }
