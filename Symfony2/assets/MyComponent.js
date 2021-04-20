@@ -19,6 +19,15 @@ function Banner() {
     )
 }
 
+function AuteurLivre(props) {
+    return (
+        <ul>
+            <li>
+                {props.titre} | {props.auteur}
+            </li>
+        </ul>
+    )
+}
 // function BarreDeRecherche() {
 //     return (
 //         <nav className="navbar navbar-light bg-secondary">
@@ -40,20 +49,20 @@ function CreaTd() {
 
 function CreaButton(){
     return(
-    <div>
-    <button className="btn btn-success">Modifier</button>
-    <button className="btn btn-danger"> Supprimer</button>
-    </div>
+        <div>
+            <button className="btn btn-success">Modifier</button>
+            <button className="btn btn-danger"> Supprimer</button>
+        </div>
     )
 }
 
 function CreaTBody(){
     return (
         <tr>
-        <CreaTd />
-        <CreaTd />
-        <CreaTd />
-        <CreaButton />
+            <CreaTd />
+            <CreaTd />
+            <CreaTd />
+            <CreaButton />
         </tr>
     )
 }
@@ -61,46 +70,41 @@ function CreaTBody(){
 function ModifBibli(){
     return(
         <div className="container-fluid">
-        <table className="table table-secondary table-bordered border-dark">
-            <thead className="thead-dark">
+            <table className="table table-secondary table-bordered border-dark">
+                <thead className="thead-dark">
                 <tr>
                     <th>
-                    Titre
+                        Titre
                     </th>
                     <th>
-                    Auteur
+                        Auteur
                     </th>
                     <th>
-                    Date
+                        Date
                     </th>
                     <th>
                     </th>
                 </tr>
 
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 <CreaTBody />
                 <CreaTBody />
                 <CreaTBody />
                 <CreaTBody />
                 <CreaTBody />
                 <CreaTBody />
-            </tbody>
-        </table>
+                </tbody>
+            </table>
         </div>
     )
 }
 
-function AuteurComponent(props){
-    return (
-        <h1>{props.auteur}</h1>
-    )
-}
 
 
 
 
-export default Banner;
+export default AuteurLivre;
 
 
 // function EspaceConnexion(){
@@ -110,7 +114,7 @@ export default Banner;
 //             <section className="photoUtilisateur">
 //                 <img></img>
 //             </section>
-            
+
 //         </div>
 //     )
 // }

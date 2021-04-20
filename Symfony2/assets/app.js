@@ -11,12 +11,13 @@ import './styles/app.css';
 // start the Stimulus application
 import './bootstrap';
 
-import './test.js'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import Banner from "./MyComponent";
+// import Banner from "./MyComponent"
+
+import AuteurLivre from "./MyComponent";
 
 
 class App extends React.Component {
@@ -31,32 +32,28 @@ class App extends React.Component {
     componentDidMount(){
         fetch("http://localhost:8000/api/livres")
             .then(livresItems => livresItems.json())
-            .then(json => {
+            .then((response) => {
+                // console.log(result["hydra:member"][0]["titre"]);
                 this.setState({
-                        isLoaded: true,
-                        livres : json,
+                        isLoaded : true,
+                        livres : response["hydra:member"]
                     }
                 )
             });
     }
 
     render() {
-            // let {isLoaded, livres} = this.state;
-
+        const {livres} = this.state;
 
         return (
-            <Banner />
-            // <div>
-            //     <ul>
-            //         {livres.map(livre => (
-            //             <li key={livre[0][idLivre]}>
-            //                 {livre["hydra:member"][0]["auteur"]}
-            //             </li>
-            //         ))};
-            //     </ul>
-            // </div>
+            <div>
+                {livres.map((livre, i) => (
+                    <AuteurLivre key={i} titre={livre.titre} auteur={livre.auteur}/>
+                ))}
+            </div>
         )
     }
 }
 
 ReactDOM.render(<App />, document.getElementById("root"))
+
