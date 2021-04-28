@@ -19,7 +19,20 @@ class BlogController extends AbstractController
 {
     
     
-    
+    /**
+     * @Route("/", name="home")
+     */
+    public function index(): Response
+    {
+
+        $repo = $this->getDoctrine()->getRepository(Livres::class);
+        $livres= $repo->findAll("Le Petit Prince");
+        return $this->render('virtueltheque/index.html.twig', [
+            'controller_name' => 'BlogController',
+            'livres' => $livres
+        ]);
+
+    }
 
     /**
      * @Route("/information", name="information")
