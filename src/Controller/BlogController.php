@@ -53,6 +53,17 @@ class BlogController extends AbstractController
         ]);
     }
 
+    public function DeleteLivre($id): Response
+    {
+        $repo = $this->getDoctrine()->getRepository(Livres::class);
+
+        $livres= $repo->find($id);
+        return $this->render('virtueltheque/afficherlivre.html.twig', [
+            "livre" => $livres
+        ]);
+    }
+
+
     /**
      * @Route("/addLivre/new",name="addLivre")
      */
