@@ -1,0 +1,19 @@
+
+.titreH1 {
+    border-bottom : 5px solid black;
+    padding : 10px;
+}
+
+
+
+.paramGear {
+    float : right;
+    width : 20%;
+    height : 20%;
+    margin-top : 15px;
+}
+
+.bibliothequeLogo {
+    width : 150px;
+    height : 150px;
+}

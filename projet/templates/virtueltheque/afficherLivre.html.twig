@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="jumbotron">
+    <article>
+        <h2>{{livre.titre}}</h2>
+        <div class="content">
+            <img src={{livre.couverture}} alt="">
+        </div>
+    </article>
+  <hr class="my-4">
+  <p>{{livre.synopsis}}</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="/" role="button">Learn more</a>
+  </p>
+</div>
+{% endblock %}
