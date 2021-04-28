@@ -11,7 +11,7 @@ function Banner() {
         <header>
 
             <center>
-                <h1 className="titreH1">Modification de ma bibliothÃ¨que</h1>
+                <h1 className="titreH1">Modification de ma bibliothèque</h1>
             </center>
             <img src={logo} className={'bibliothequeLogo'}/>
             <ModifBibli />
@@ -22,15 +22,9 @@ function Banner() {
 function AuteurLivre(props) {
     return (
         <ul>
-<<<<<<< Updated upstream
             <li>
                 {props.titre} | {props.auteur}
             </li>
-=======
-        <li>
-            {props.titre} | {props.auteur}
-        </li>
->>>>>>> Stashed changes
         </ul>
     )
 }
