@@ -64,7 +64,7 @@ class BlogController extends AbstractController
     public function rechercherLivre(): Response
     {
 
-        $bdd_bibliotheque = new PDO('mysql:host=localhost;dbname=copie_bibli_3;charset=utf8', 'root', '');
+        $bdd_bibliotheque = new PDO('mysql:host=localhost;dbname=bibliothequevirtuelle;charset=utf8', 'root', '');
 
         $reponse = $bdd_bibliotheque->query("SELECT * FROM Livres");
 
