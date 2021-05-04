@@ -1,0 +1,3 @@
+<?php //route_name_0328c7c01c6d20f1084a1e41d147989e
+
+return [PHP_INT_MAX, 'api_bibliotheques_get_item'];

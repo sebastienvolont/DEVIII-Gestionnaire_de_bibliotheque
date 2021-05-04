@@ -1,0 +1,3 @@
+<?php //route_name_453095dec97045ba3758f39a2f5b01e2
+
+return [PHP_INT_MAX, 'api_livres_get_item'];

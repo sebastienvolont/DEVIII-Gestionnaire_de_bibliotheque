@@ -1,0 +1,5 @@
+<?php //iri_identifiersf5555b331f2acdae5856f7245ba2ef2e
+
+return [PHP_INT_MAX, [
+    'idBiblio',
+]];

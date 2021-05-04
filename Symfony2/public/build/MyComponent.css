@@ -1,0 +1,26 @@
+
+.img-livre {
+    height : 200px;
+    width : 200px;
+}
+
+.titreH1 {
+    border-bottom : 5px solid black;
+    padding : 10px;
+}
+
+
+
+.paramGear {
+    float : right;
+    width : 20%;
+    height : 20%;
+    margin-top : 15px;
+}
+
+.bibliothequeLogo {
+    width : 150px;
+    height : 150px;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9hc3NldHMvc3R5bGVzL2FwcC5jc3MiLCJ3ZWJwYWNrOi8vLy4vYXNzZXRzL3N0eWxlcy9CYW5uZXIuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQTtJQUNJLGNBQWM7SUFDZCxhQUFhO0FBQ2pCLEM7O0FDSEE7SUFDSSwrQkFBK0I7SUFDL0IsY0FBYztBQUNsQjs7OztBQUlBO0lBQ0ksYUFBYTtJQUNiLFdBQVc7SUFDWCxZQUFZO0lBQ1osaUJBQWlCO0FBQ3JCOztBQUVBO0lBQ0ksYUFBYTtJQUNiLGNBQWM7QUFDbEIsQyIsImZpbGUiOiJNeUNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcclxuLmltZy1saXZyZSB7XHJcbiAgICBoZWlnaHQgOiAyMDBweDtcclxuICAgIHdpZHRoIDogMjAwcHg7XHJcbn0iLCJcclxuLnRpdHJlSDEge1xyXG4gICAgYm9yZGVyLWJvdHRvbSA6IDVweCBzb2xpZCBibGFjaztcclxuICAgIHBhZGRpbmcgOiAxMHB4O1xyXG59XHJcblxyXG5cclxuXHJcbi5wYXJhbUdlYXIge1xyXG4gICAgZmxvYXQgOiByaWdodDtcclxuICAgIHdpZHRoIDogMjAlO1xyXG4gICAgaGVpZ2h0IDogMjAlO1xyXG4gICAgbWFyZ2luLXRvcCA6IDE1cHg7XHJcbn1cclxuXHJcbi5iaWJsaW90aGVxdWVMb2dvIHtcclxuICAgIHdpZHRoIDogMTUwcHg7XHJcbiAgICBoZWlnaHQgOiAxNTBweDtcclxufSJdLCJzb3VyY2VSb290IjoiIn0=*/

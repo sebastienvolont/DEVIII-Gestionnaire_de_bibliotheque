@@ -1,0 +1,13 @@
+{
+  "build/app.css": "/build/app.css",
+  "build/app.js": "/build/app.js",
+  "build/MyComponent.css": "/build/MyComponent.css",
+  "build/MyComponent.js": "/build/MyComponent.js",
+  "build/test.js": "/build/test.js",
+  "build/affichagelivre.css": "/build/affichagelivre.css",
+  "build/affichagelivre.js": "/build/affichagelivre.js",
+  "build/runtime.js": "/build/runtime.js",
+  "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ar-a07b06.js": "/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ar-a07b06.js",
+  "build/node_modules_symfony_stimulus-bridge_dist_webpack_loader_js_assets_controllers_json-assets_My-71afd7.js": "/build/node_modules_symfony_stimulus-bridge_dist_webpack_loader_js_assets_controllers_json-assets_My-71afd7.js",
+  "build/images/bibliotheque-logo.svg": "/build/images/bibliotheque-logo.513b191d.svg"
+}

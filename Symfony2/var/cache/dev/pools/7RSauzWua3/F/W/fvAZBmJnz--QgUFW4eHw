@@ -1,0 +1,5 @@
+<?php //iri_identifiersf5192d51819e4d000014315261cddf69
+
+return [PHP_INT_MAX, [
+    'idLivre',
+]];
