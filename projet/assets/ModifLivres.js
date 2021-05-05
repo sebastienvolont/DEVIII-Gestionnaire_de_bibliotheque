@@ -11,9 +11,9 @@ import logo from "./img/bibliotheque-logo.svg"
 function AuteurLivre(props) {
     return (
         <ul>
-        <li>
-            {props.titre} | {props.auteur}
-        </li>
+            <li>
+                {props.titre} | {props.auteur}
+            </li>
         </ul>
     )
 }
@@ -22,10 +22,11 @@ function AfficherDonnees(props) {
     return (
         <tbody>
         <tr>
-        <td>{props.idLivre}</td>
-        <td>{props.titre}</td>
-        <td>{props.auteur}</td>
-        <td><CreerButton /></td>
+            <td>{props.idLivre}</td>
+            <td>{props.titre}</td>
+            <td>{props.auteur}</td>
+            <td><button className="btn btn-danger" value={props.idLivre} onClick={props.appel}> Supprimer</button>
+                <button className="btn btn-success"> Modifier</button></td>
         </tr>
         </tbody>
     )
@@ -38,23 +39,23 @@ function CreerTd() {
     )
 }
 
-function CreerButton(){
+function CreerButton(props){
     return(
-    <div>
-    <button className="btn btn-success"> Modifier</button>
-    {/* <button className={"btn btn-danger"} onClick={this.refresh.bind(this)}>Supprimer</button> */}
-    <button className="btn btn-danger"> Supprimer</button>
-    </div>
+        <div>
+            <button className="btn btn-success"> Modifier</button>
+            {/* <button className={"btn btn-danger"} onClick={this.refresh.bind(this)}>Supprimer</button> */}
+            <button className="btn btn-danger" > Supprimer</button>
+        </div>
     )
 }
 
 function CreerBody(){
     return (
         <tr>
-        <CreerTd />
-        <CreerTd />
-        <CreerTd />
-        <CreerButton />
+            <CreerTd />
+            <CreerTd />
+            <CreerTd />
+            <CreerButton />
         </tr>
     )
 }
@@ -62,32 +63,32 @@ function CreerBody(){
 function ModifBibli(){
     return(
         <div className="container-fluid">
-        <table className="table table-secondary table-bordered border-dark">
-            <thead className="thead-dark">
+            <table className="table table-secondary table-bordered border-dark">
+                <thead className="thead-dark">
                 <tr>
                     <th>
-                    Titre
+                        Titre
                     </th>
                     <th>
-                    Auteur
+                        Auteur
                     </th>
                     <th>
-                    Date
+                        Date
                     </th>
                     <th>
                     </th>
                 </tr>
 
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 <CreerBody />
                 <CreerBody />
                 <CreerBody />
                 <CreerBody />
                 <CreerBody />
                 <CreerTBody />
-            </tbody>
-        </table>
+                </tbody>
+            </table>
         </div>
     )
 }
@@ -106,7 +107,7 @@ export default AfficherDonnees;
 //             <section className="photoUtilisateur">
 //                 <img></img>
 //             </section>
-            
+
 //         </div>
 //     )
 // }

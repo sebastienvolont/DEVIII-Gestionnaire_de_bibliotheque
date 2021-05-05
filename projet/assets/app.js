@@ -32,7 +32,7 @@ class App extends React.Component {
     }
 
     refresh () {
-        fetch("http://localhost:8000/api/livres")
+        fetch("http://localhost:8000/api/livres", {method: 'GET'})
             .then(livresItems => livresItems.json())
             .then((response) => {
                 // console.log(result["hydra:member"][0]["titre"]);
@@ -42,6 +42,12 @@ class App extends React.Component {
                     }
                 )
             });
+    }
+
+    delete (identifiantLivre) {
+        document.get
+        fetch("http://localhost:8000/api/livres/" + identifiantLivre, {method : 'DELETE'})
+            .then(this.refresh.bind(this))
     }
 
 
@@ -54,24 +60,28 @@ class App extends React.Component {
             <div className={"container-fluid"}>
                 <Banner />
 
-            <table className="table table-secondary table-bordered border-dark">
-            <thead className="thead-dark">
-                <tr>
-                    <th>Id livre</th>
-                    <th>Titre</th>
-                    <th>Auteur </th>
-                    <th> </th>
-                </tr>
-            </thead>
-            {livres.map((livre, i) => (
-                    <AfficherDonnees key={i} idLivre={livre.idLivre} titre={livre.titre} auteur={livre.auteur}/>
-                ))}
-            </table>
+                <table className="table table-secondary table-bordered border-dark">
+                    <thead className="thead-dark">
+                    <tr>
+                        <th>Id livre</th>
+                        <th>Titre</th>
+                        <th>Auteur </th>
+                        <th> </th>
+                    </tr>
+                    </thead>
+                    {livres.map((livre, i) => (
+                        <AfficherDonnees key={i} idLivre={livre.idLivre} titre={livre.titre} auteur={livre.auteur} appel={this.delete.bind(this, livre.idLivre)}/>
+
+                    ))}
+                </table>
                 <button className={"btn btn-primary"} onClick={this.refresh.bind(this)}>Rafraichir la liste</button>
             </div>
+
+
         )
     }
 }
+
 
 
 function Banner() {
