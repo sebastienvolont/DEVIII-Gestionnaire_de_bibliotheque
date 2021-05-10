@@ -45,7 +45,6 @@ class App extends React.Component {
     }
 
     delete (identifiantLivre) {
-        document.get
         fetch("http://localhost:8000/api/livres/" + identifiantLivre, {method : 'DELETE'})
             .then(this.refresh.bind(this))
     }

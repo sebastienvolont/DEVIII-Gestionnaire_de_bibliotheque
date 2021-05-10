@@ -26,12 +26,22 @@ class BlogController extends AbstractController
     {
 
         $repo = $this->getDoctrine()->getRepository(Livres::class);
-        $livres= $repo->findAll("Le Petit Prince");
+        $livres = $repo->findAll("Le Petit Prince");
         return $this->render('virtueltheque/index.html.twig', [
             'controller_name' => 'BlogController',
             'livres' => $livres
         ]);
 
+    }
+
+    /**
+     * @Route("/MaBibliotheque", name="MaBibliotheque")
+     */
+    public function maBibliotheque(): Response
+    {
+        return $this->render('virtueltheque/mabibliotheque.html.twig', [
+            'title'=>"Ma bibliothèque",
+        ]);
     }
 
     /**
