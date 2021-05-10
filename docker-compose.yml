@@ -1,0 +1,19 @@
+version: '3.3'
+
+services:
+    db:
+        build: ./database1
+        container_name: database
+        environment:
+            - MYSQL_DATABASE=${MYSQL_DATABASE}
+            - MYSQL_USER=${MYSQL_USER}
+            - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+        ports:
+            - 3306:3306
+
+    web:
+        build: ./Dockerfile
+        container_name: symfonyweb
+        ports:
+            - 80:80
