@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  virtualtheque-web:
+    container_name: container-apache-virtualtheque
+    build :
+      context: ./
+      dockerfile: docker/www-virtualtheque/Dockerfile
+    ports:
+      - 80:80
+    links:
+      - db
+  db:
+    container_name: container-mysql-virtualtheque
+    build:
+      context: docker/database-virtualtheque
+      dockerfile: Dockerfile
+    environment:
+      MYSQL_DATABASE: bibliothequevirtuelle
+      MYSQL_ROOT_PASSWORD: ${VIRTUALTHEQUE_DATABASE_PASSWORD}
+      MYSQL_USER: 'admin'
+      MYSQL_PASSWORD: ${VIRTUALTHEQUE_DATABASE_PASSWORD}
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./docker/database-virtualtheque/data:/docker-entrypoint-initdb.d
+

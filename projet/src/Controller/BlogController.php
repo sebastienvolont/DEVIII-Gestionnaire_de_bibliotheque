@@ -173,7 +173,7 @@ class BlogController extends AbstractController
         $repo = $this->getDoctrine()->getRepository(Livres::class);
 
         $livres= $repo->find($id);
-        return $this->render('virtueltheque/afficherlivre.html.twig', [
+        return $this->render('virtueltheque/afficherLivre.html.twig', [
             "livre" => $livres
         ]);
     }
