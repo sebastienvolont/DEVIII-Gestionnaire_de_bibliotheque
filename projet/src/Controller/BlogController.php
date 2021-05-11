@@ -18,7 +18,7 @@ class BlogController extends AbstractController
 
 {
 
-
+    //Route par défaut c'est la page principale du site
     /**
      * @Route("/", name="home")
      */
@@ -26,14 +26,14 @@ class BlogController extends AbstractController
     {
 
         $repo = $this->getDoctrine()->getRepository(Livres::class);
-        $livres = $repo->findAll("Le Petit Prince");
+        $livres = $repo->findAll();
         return $this->render('virtueltheque/index.html.twig', [
-            'controller_name' => 'BlogController',
             'livres' => $livres
         ]);
 
     }
 
+    //Route qui conduit vers la page qui permet de trier la bibliothèque a l'avenir page principale
     /**
      * @Route("/MaBibliotheque", name="MaBibliotheque")
      */
@@ -44,6 +44,7 @@ class BlogController extends AbstractController
         ]);
     }
 
+    //Route qui conduit a la page d'information du site 
     /**
      * @Route("/information", name="information")
      */
@@ -55,13 +56,14 @@ class BlogController extends AbstractController
         ]);
     }
 
+    //Route qui conduit à la page de modification de la bibliothèque
     /**
-     * @Route("/modifLivres", name="modifLivres")
+     * @Route("/modifBibli", name="modifBibli")
      */
-    public function modifLivres(): Response
+    public function modifBibli(): Response
     {
 
-        return $this->render('virtueltheque/modifLivre.html.twig', [
+        return $this->render('virtueltheque/modifBibli.html.twig', [
             'title' => "Page de modification de livres",
             'controller_name' => 'BlogController']);
 
