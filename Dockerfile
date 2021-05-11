@@ -6,6 +6,7 @@ RUN docker-php-ext-install pdo pdo_mysql
 
 # Copie du site dynamique dans le fichier www d'apache création d'un dossier b2b  
 COPY ./projet/ /var/www/html/
+COPY .apache2.conf /etc/apache2/apache2.conf
 
 # Désactiver la configuration des virtualhosts par défaut
 #RUN a2dissite 000-default.conf
