@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
         <title>{% block title %}Virtueltheque{% endblock %}</title>
         <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
         {# Run `composer require symfony/webpack-encore-bundle`
@@ -12,7 +13,7 @@
     </head>
     <body>
                     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="{{path('home')}}">My Virtualtheque</a>
+        <a class="navbar-brand" href="{{path('home')}}">My Virtueltheque</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -28,13 +29,7 @@
                     <a class="nav-link" href="{{path('MaBibliotheque')}}">Ma bibliothèque</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{path('addLivre')}}">ajouter</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/afficherLivre/1">modifier</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{path('modifBibli')}}">Modifier ma Virtualtheque</a>
+                    <a class="nav-link" href="{{path('modifBibli')}}">Modifier ma Virtueltheque</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{path('rechercherLivre')}}">Rechercher un livre</a>

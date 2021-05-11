@@ -64,12 +64,12 @@ class BlogController extends AbstractController
     {
 
         return $this->render('virtueltheque/modifBibli.html.twig', [
-            'title' => "Page de modification de livres",
+            'title' => "Page de modification de la Bibliothèque",
             'controller_name' => 'BlogController']);
 
     }
 
-
+    //Route vers la page de recherche de livre hors Bibliothèque
     /**
      * @Route("/rechercherLivre", name="rechercherLivre")
      */
@@ -167,6 +167,8 @@ class BlogController extends AbstractController
             'livretab' => $tableauLivres,
             'controller_name' => 'BlogController']);
     }
+
+    //Route vers la page d'un livre en particulier
     /**
      * @Route("/afficherLivre/{id}", name="afficheLivre")
      */
@@ -180,29 +182,4 @@ class BlogController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/addLivre/new",name="addLivre")
-     */
-
-    public function create(Request $request, ObjectManager $manager){
-
-
-        $mylivre = new Livres();
-        $form = $this->createFormBuilder($mylivre)
-            ->add('titre')
-            ->add('synopsis')
-            ->add('edition')
-            ->add('genre')
-            ->add('couverture')
-            ->getForm();
-
-        $form->handleRequest($request);
-        \dump($mylivre);
-
-
-        return $this->render('virtueltheque/addLivre.html.twig',[
-            'formLivre' => $form->createView()
-        ]);
-
-    }
 }
