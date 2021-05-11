@@ -17,8 +17,8 @@ use PDO;
 class BlogController extends AbstractController
 
 {
-    
-    
+
+
     /**
      * @Route("/", name="home")
      */
@@ -26,7 +26,7 @@ class BlogController extends AbstractController
     {
 
         $repo = $this->getDoctrine()->getRepository(Livres::class);
-        $livres= $repo->findAll("Le Petit Prince");
+        $livres = $repo->findAll("Le Petit Prince");
         return $this->render('virtueltheque/index.html.twig', [
             'controller_name' => 'BlogController',
             'livres' => $livres
@@ -35,11 +35,21 @@ class BlogController extends AbstractController
     }
 
     /**
+     * @Route("/MaBibliotheque", name="MaBibliotheque")
+     */
+    public function maBibliotheque(): Response
+    {
+        return $this->render('virtueltheque/mabibliotheque.html.twig', [
+            'title'=>"Ma bibliothèque",
+        ]);
+    }
+
+    /**
      * @Route("/information", name="information")
      */
     public function myInfo(): Response
     {
-        
+
         return $this->render('virtueltheque/information.html.twig', [
             'title'=>"Page d'information",
         ]);
@@ -48,14 +58,14 @@ class BlogController extends AbstractController
     /**
      * @Route("/modifLivres", name="modifLivres")
      */
-     public function modifLivres(): Response
-     {
+    public function modifLivres(): Response
+    {
 
-         return $this->render('virtueltheque/modifLivre.html.twig', [
-             'title' => "Page de modification de livres",
-             'controller_name' => 'BlogController']);
-            
-     }
+        return $this->render('virtueltheque/modifLivre.html.twig', [
+            'title' => "Page de modification de livres",
+            'controller_name' => 'BlogController']);
+
+    }
 
 
     /**
@@ -71,7 +81,9 @@ class BlogController extends AbstractController
         $url = 'https://www.googleapis.com/books/v1/volumes?q=bob';
 
         if (isset($_GET["leLivre"])) {
-            $url = 'https://www.googleapis.com/books/v1/volumes?q=' . $_GET["leLivre"];
+            $livre_recherche = $_GET["leLivre"];
+            $livre_recherche = str_replace(" ", "", $livre_recherche);
+            $url = 'https://www.googleapis.com/books/v1/volumes?q=' . $livre_recherche;
         }
         $recup_json = file_get_contents($url);
         $objet_json = json_decode($recup_json, true);
@@ -153,7 +165,7 @@ class BlogController extends AbstractController
             'livretab' => $tableauLivres,
             'controller_name' => 'BlogController']);
     }
-     /**
+    /**
      * @Route("/afficherLivre/{id}", name="afficheLivre")
      */
     public function afficherLivre($id): Response
@@ -172,23 +184,23 @@ class BlogController extends AbstractController
 
     public function create(Request $request, ObjectManager $manager){
 
-       
+
         $mylivre = new Livres();
         $form = $this->createFormBuilder($mylivre)
-                    ->add('titre')
-                    ->add('synopsis')
-                    ->add('edition')
-                    ->add('genre')
-                    ->add('couverture')
-                    ->getForm();
+            ->add('titre')
+            ->add('synopsis')
+            ->add('edition')
+            ->add('genre')
+            ->add('couverture')
+            ->getForm();
 
         $form->handleRequest($request);
         \dump($mylivre);
-        
-        
+
+
         return $this->render('virtueltheque/addLivre.html.twig',[
             'formLivre' => $form->createView()
         ]);
-        
+
     }
 }
