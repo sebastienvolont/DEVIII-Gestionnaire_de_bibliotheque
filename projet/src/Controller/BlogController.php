@@ -182,4 +182,18 @@ class BlogController extends AbstractController
         ]);
     }
 
+    //Route vers la page de modification d'un livre en particulier
+    /**
+     * @Route("/modifLivres/{id}", name="modifLivres")
+     */
+    public function modifLivres($id): Response
+    {
+        $repo = $this->getDoctrine()->getRepository(Livres::class);
+
+        $livres= $repo->find($id);
+        return $this->render('virtueltheque/modifLivre.html.twig', [
+            "livre" => $livres
+        ]);
+    }
+
 }

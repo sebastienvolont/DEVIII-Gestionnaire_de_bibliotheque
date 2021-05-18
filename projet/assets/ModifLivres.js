@@ -26,7 +26,7 @@ function AfficherDonnees(props) {
             <td>{props.titre}</td>
             <td>{props.auteur}</td>
             <td><button className="btn btn-danger" value={props.idLivre} onClick={props.appel}> Supprimer</button>
-                <button className="btn btn-success"> Modifier</button></td>
+            <a href={"http://localhost:8000/modifLivres/" + props.idLivre}><button className="btn btn-success" > Modifier</button></a></td>
         </tr>
         </tbody>
     )

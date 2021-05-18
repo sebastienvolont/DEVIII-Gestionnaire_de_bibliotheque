@@ -24,6 +24,8 @@ Encore
     .addEntry('MyComponent', './assets/ModifLivres.js')
     .addEntry('affichagelivre', './assets/AffichageLivres.js')
     .addEntry('mabibliotheque', './assets/MaBibliotheque.js')
+    .addEntry('modifLivre', './assets/modificationLivre.js')
+
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')
