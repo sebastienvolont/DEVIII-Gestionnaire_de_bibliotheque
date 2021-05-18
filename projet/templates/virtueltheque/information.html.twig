@@ -1,9 +1,31 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    
     <h1>{{title}}</h1>
+    <p>Ce site web est un projet dans le cadre de notre cours de Développement DEV III à l'Ephec</p>
+    <p>Ce site à pour objectif de permettre de garder une version numérique d'une bibliothèque afin de simplifier la recherche de livre.</p>
 
 
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, perferendis laudantium ex ipsum exercitationem eos. Dolor natus quam consectetur quia non, nam error ipsam minima beatae enim iste quibusdam velit soluta, nisi consequuntur ducimus adipisci ex sint nulla rem? At!</p>
-    <p>Aperiam, explicabo incidunt, soluta quae distinctio tempore corrupti nobis voluptas facere deleniti repudiandae, odit natus. In deserunt architecto debitis exercitationem facere praesentium corrupti. Ratione, modi fuga reprehenderit quas odio repellendus! Quos excepturi voluptatibus aliquid veniam doloribus provident ipsa, molestias ipsum.</p>
-{% endblock %}
+    <h4>Technologies</h4>
+
+    <p>Les technologies sont les suivantes:
+    <ul>
+    <li>
+    Symfony en Framework Backend
+    </li>
+    <li>
+    Réact en Framework Backend
+    </li>
+    <li>
+    MYSQL pour notre DATABASE
+    </li>
+    </ul>
+
+
+    <h2>Progression du projet</h2>
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
+    </div>
+
+    {% endblock %}
