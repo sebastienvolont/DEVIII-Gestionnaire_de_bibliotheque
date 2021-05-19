@@ -59,26 +59,26 @@ class ModificationLivre extends React.Component {
         return (
             
                 <div>
-                    <form onSubmit={this.updatelivre.bind(this,id,livres)}>
-                        <p><h3>Titre :</h3>
-                            <input type="text" className="form-control" id="titre_livre" aria-describedby="Titre du livre" defaultValue={livres.titre} placeholder={livres.titre}/>
-                        </p>
+                    <form label="modification du livre" onSubmit={this.updatelivre.bind(this,id,livres)}>
+                        <div aria-describedby="titre_livre"><h3>Titre :</h3>
+                            <input type="text" aria-labelledby="titre_livre" className="form-control" id="titre_livre" defaultValue={livres.titre} placeholder={livres.titre}/>
+                        </div>
 
-                        <p><h3>Auteur :</h3> 
-                            <input type="text" className="form-control" id="auteur_livre" aria-describedby="Auteur du livre" defaultValue={livres.auteur} placeholder={livres.auteur}/>
-                        </p>
+                        <div aria-describedby="auteur_livre"><h3>Auteur :</h3> 
+                            <input type="text" aria-labelledby="auteur_livre" className="form-control" id="auteur_livre" defaultValue={livres.auteur} placeholder={livres.auteur}/>
+                        </div>
 
-                        <p><h3>Genre :</h3>
-                            <input type="text" className="form-control" id="genre_livre" aria-describedby="genre du livre" defaultValue={livres.genre} placeholder={livres.genre}/>
-                        </p>
+                        <div aria-describedby="genre_livre"><h3>Genre :</h3>
+                            <input type="text" aria-labelledby="genre_livre" className="form-control" id="genre_livre" defaultValue={livres.genre} placeholder={livres.genre}/>
+                        </div>
 
-                        <p><h3>Edition :</h3>
-                            <input type="text" className="form-control" id="edition_livre" aria-describedby="Edition du livre" defaultValue={livres.edition} placeholder={livres.edition}/>
-                        </p>
+                        <div aria-describedby="edition_livre"><h3>Edition :</h3>
+                            <input type="text" aria-labelledby="edition_livre" className="form-control" id="edition_livre" defaultValue={livres.edition} placeholder={livres.edition}/>
+                        </div>
 
-                        <p><h3>Synopsis :</h3>
-                            <textarea className="form-control" id="synopsis_livre" aria-describedby="Edition du livre" defaultValue={livres.synopsis} placeholder={livres.edition} rows="10" />
-                        </p>
+                        <div aria-describedby="synopsis_livre"><h3>Synopsis :</h3>
+                            <textarea className="form-control" aria-labelledby="synopsis_livre" id="synopsis_livre" defaultValue={livres.synopsis} placeholder={livres.edition} rows="10" />
+                        </div>
 
                         <input type="submit" className="btn btn-primary" value="Update" />
 
