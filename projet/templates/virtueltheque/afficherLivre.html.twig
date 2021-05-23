@@ -4,14 +4,19 @@
 <div class="jumbotron">
     <article>
         <h2>{{livre.titre}}</h2>
+        <h3>{{livre.auteur}}</h3>
+        <h3>{{livre.genre}}</h3>
+        <h3>{{livre.edition}}</h3>
+        <h3>{{livre.parution}}</h3>
         <div class="content">
             <img src={{livre.couverture}} alt="">
         </div>
+
     </article>
   <hr class="my-4">
   <p>{{livre.synopsis}}</p>
   <p class="lead">
-    <a class="btn btn-primary btn-lg" href="/" role="button">Learn more</a>
+    <a class="btn btn-primary btn-lg" href="/" role="button">retour</a>
   </p>
 </div>
 {% endblock %}
