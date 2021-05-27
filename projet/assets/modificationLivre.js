@@ -32,7 +32,6 @@ class ModificationLivre extends React.Component {
     }
 
     updatelivre (id,livres) {
-        console.log(livres.genre)
         let someData={
             "titre" : document.getElementById("titre_livre").value,
             "edition" : document.getElementById("edition_livre").value,
