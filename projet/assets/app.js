@@ -15,8 +15,6 @@ import './bootstrap';
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-// import Banner from "./MyComponent"
-
 import AfficherDonnees from "./ModifLivres";
 
 import logo from "./img/bibliotheque-logo.svg"
@@ -62,7 +60,7 @@ class App extends React.Component {
                 <table className="table table-secondary table-bordered border-dark">
                     <thead className="thead-dark">
                     <tr>
-                        <th>Id livre</th>
+                        <th>Identifiant du livre</th>
                         <th>Titre</th>
                         <th>Auteur </th>
                         <th> </th>

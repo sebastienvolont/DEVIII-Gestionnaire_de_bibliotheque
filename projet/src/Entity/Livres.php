@@ -72,6 +72,13 @@ class Livres
     private $auteur;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="statut", type="string", length=255, nullable=false)
+     */
+    private $statut;
+
+    /**
      * @var \Bibliotheque
      *
      * @ORM\ManyToOne(targetEntity="Bibliotheque")
@@ -178,6 +185,18 @@ class Livres
     public function setIdBibliotheque(?Bibliotheque $idBibliotheque): self
     {
         $this->idBibliotheque = $idBibliotheque;
+
+        return $this;
+    }
+
+    public function getStatut(): ?string
+    {
+        return $this->statut;
+    }
+
+    public function setStatut(string $statut): self
+    {
+        $this->statut = $statut;
 
         return $this;
     }

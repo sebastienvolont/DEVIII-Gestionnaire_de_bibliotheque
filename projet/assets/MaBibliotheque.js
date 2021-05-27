@@ -171,20 +171,22 @@ function FiltreLivre(props){
 
 function Bibliotheque (props){
         return (
-            <div className={"container-fluid divBiblio"}>
-            <div className="col md-6 lg-6">
+            <div className={"container divBiblio"}>
                 <div className="jumbotron">
-            <div className="col-xs-10 col-sm-2">
+            <div className="card mb-3">
+                <div class="row g-0">
+            <div className="col-md-4">
                 <img src={props.couverture} className="card-img-top" alt="couverture livre" />
             </div>
-            <div className="col-xs-10 col-sm-8">
+            <div className="col-md-8">
+                <div class="card-body">
                 <h4 className="card-title">{props.titre} | {props.parution} | {props.statut}</h4>
                 <p className="card-text" style={{color : "black"}}>
                     {props.synopsis}
                 </p>
                 <a href={"http://localhost:8000/afficherLivre/" + props.idLivre}><button className="btn btn-primary"> Afficher plus d'informations </button></a>
-            </div>
-            <div className="form-check">
+
+                <div className="form-check">
                 <input className="form-check-input" type="checkbox" value="Non lu" id={"livreNonLu" + props.idLivre} name="statutLivre" onChange={props.handleCheckBox} onClick={() => choixCheckbox("livreFini" + props.idLivre, "livreEnCours" + props.idLivre, "livreNonLu" + props.idLivre)}/>
                 <label className="form-check-label" htmlFor={"livreNonLu" + props.idLivre}>
                     Non lu
@@ -204,6 +206,11 @@ function Bibliotheque (props){
                 </div>
                 </div>
                 </div>
+            
+                </div>
+                </div>
+                </div>
+ 
         </div>
 
         )
