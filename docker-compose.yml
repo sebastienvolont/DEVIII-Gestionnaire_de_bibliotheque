@@ -8,8 +8,12 @@ services:
       dockerfile: docker/www-virtualtheque/Dockerfile
     ports:
       - 80:80
+      - 443:443
     links:
       - db
+    networks:
+      virtualtheque_net:
+         ipv4_address: 172.16.0.2
   db:
     container_name: container-mysql-virtualtheque
     build:
@@ -21,8 +25,15 @@ services:
       MYSQL_USER: 'admin'
       MYSQL_PASSWORD: ${VIRTUALTHEQUE_DATABASE_PASSWORD}
     restart: always
-    ports:
-      - "3306:3306"
     volumes:
       - ./docker/database-virtualtheque/data:/docker-entrypoint-initdb.d
+    networks:
+      virtualtheque_net:
+         ipv4_address: 172.16.0.3
 
+networks:
+  virtualtheque_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.0.0/24
